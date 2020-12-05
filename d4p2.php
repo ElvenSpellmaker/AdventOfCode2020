@@ -31,7 +31,7 @@ foreach ($passports as $passport)
 				case 'hgt':
 					$heightMatch = preg_match('%^([0-9]{2,3})(cm|in)$%', $values[$fieldKey], $fieldMatches);
 
-					if($heightMatch === 0)
+					if ($heightMatch === 0)
 					{
 						$validPassport = false;
 						break 2;
