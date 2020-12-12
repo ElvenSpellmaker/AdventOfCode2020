@@ -25,19 +25,19 @@ $code = explode("\n", $code);
 
 $preamble = 25;
 
-$premableArray = array_slice($code, 0, $preamble);
+$preambleArray = array_slice($code, 0, $preamble);
 $remainingArray = array_slice($code, $preamble, count($code));
 
 $preamblePosition = 0;
 foreach ($remainingArray as $nextKey => $nextValue)
 {
-	foreach ($premableArray as $tryKey => $tryValue)
+	foreach ($preambleArray as $tryKey => $tryValue)
 	{
-		$searchArray = $premableArray;
+		$searchArray = $preambleArray;
 		unset($searchArray[$tryKey]);
 		$searchValue = $nextValue - $tryValue;
 
-		$found = array_search($searchValue, $premableArray);
+		$found = array_search($searchValue, $preambleArray);
 
 		if ($found !== false)
 		{
@@ -45,8 +45,8 @@ foreach ($remainingArray as $nextKey => $nextValue)
 		}
 	}
 
-	unset($premableArray[$preamblePosition++]);
-	$premableArray[] = $nextValue;
+	unset($preambleArray[$preamblePosition++]);
+	$preambleArray[] = $nextValue;
 
 	if ($found === false)
 	{
